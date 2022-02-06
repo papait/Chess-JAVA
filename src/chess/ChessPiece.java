@@ -3,6 +3,8 @@ package chess;
 import boardgame.Board;
 import boardgame.Piece;
 
+// Subclasse da Piece com outros metodos e elementos
+
 public class ChessPiece extends Piece{
 
 	private Color color;

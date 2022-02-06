@@ -1,5 +1,5 @@
 package boardgame;
-
+// Classe representam uma posição no tabuleiro
 public class Position {
 
 	private int row;
@@ -25,7 +25,7 @@ public class Position {
 	public void setColumn(int column) {
 		this.column = column;
 	}
-	
+	// Imprimir posição na tela
 	@Override
 	public String toString () {
 		return row + ", " + column;
