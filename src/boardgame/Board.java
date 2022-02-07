@@ -38,6 +38,20 @@ public class Board {
 		}
 		return pieces[position.getRow()][position.getColumn()];
 	} 
+	// Metodo remover peças da picição tabuleira
+	public Piece removePiece (Position position) {
+		if (!positionExists(position)) {
+			throw new BoardException("Position not on the board");
+		}
+		if (piece (position)==null) {
+			return null;
+		}
+		Piece aux = piece (position);
+		aux.position = null;  // removendo a peça tabuleiro
+		pieces [position.getRow()][position.getColumn()] = null; // na matrix de peça agora vai ser null nessa posição 
+		return aux;
+	}
+	
 	// Esse metodo faz com que a matrix pieces(na posição talz) receba uma peça por parametro
 	public void placePiece (Piece piece, Position position) {
 		
@@ -63,4 +77,6 @@ public class Board {
 		}
 		return piece(position) != null;
 	}
+	
+	
 }
