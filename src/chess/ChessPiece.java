@@ -5,7 +5,7 @@ import boardgame.Piece;
 
 // Subclasse da Piece com outros metodos e elementos
 
-public class ChessPiece extends Piece{
+public abstract class ChessPiece extends Piece{
 
 	private Color color;
 
