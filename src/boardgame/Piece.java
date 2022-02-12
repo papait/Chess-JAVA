@@ -8,7 +8,7 @@ public abstract class Piece {
 	private Board board;
 
 	// POSITION null pq a preça e recem crianda não está no tabuleiro ainda
-	public Piece(Board board) {
+	public Piece(Board board) { 
 		this.board = board;
 		position = null;
 	}
@@ -19,7 +19,7 @@ public abstract class Piece {
 	}
 
 	public abstract boolean[][] possibleMoves();
-
+	// Implementando metodo concreto em um abstrato. Só vai existir se o abstrato existir
 	public boolean possibleMove(Position position) {
 		return possibleMoves()[position.getRow()][position.getColumn()];
 	}

@@ -40,6 +40,7 @@ public class ChessMatch {
 
 		// Operação valiar se tem alguma peça na posição
 		validateSourcePostion(source);
+		validateTargetPositon(source, target);
 		// Validar se tem uma peça nessa posição
 		Piece capturesPiece = makeMove(source, target);
 		return (ChessPiece) capturesPiece;
@@ -61,6 +62,11 @@ public class ChessMatch {
 		}
 		if (!board.piece(position).isThereAnyPossibleMove()) {
 			throw new ChessException("There is no possible moves for the chosen piece");
+		}
+	}
+	private void validateTargetPositon (Position source, Position target) {
+		if(!board.piece(source).possibleMove(target)) {
+			throw new ChessException("The chosen piece can-t movre to target position");
 		}
 	}
 
