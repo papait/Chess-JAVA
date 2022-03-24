@@ -30,6 +30,13 @@ public class ChessMatch {
 		// Retornar a matriz de peças da minha partida xadres
 		return mat;
 	}
+	
+	public boolean [][] posibleMoves (ChessPosition sourcePosition){
+		Position position = sourcePosition.toPosition();
+		validateSourcePostion(position);
+		return board.piece(position).possibleMoves();
+	}
+	
 	// Metodo mover peça
 
 	public ChessPiece performChessMove(ChessPosition sourcePosition, ChessPosition targetPosition) {
