@@ -4,6 +4,7 @@ package boardgame;
 public abstract class Piece {
 
 	// Associação da peça com tabuleiro realação 1 para n
+	// Associação de Tabuleiro e possição peça
 	protected Position position;
 	private Board board;
 

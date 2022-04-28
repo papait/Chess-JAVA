@@ -5,12 +5,12 @@ import boardgame.Piece;
 import boardgame.Position;
 import chess.pieces.King;
 import chess.pieces.Rook;
-
+// Nessa class que tem as regras do jogo xafres
 public class ChessMatch {
 
 	private Board board;
 
-	// Classe que determinar o tamanho do tabuleiro
+	// Classe chessmatch que determinar o tamanho do tabuleiro
 	public ChessMatch() {
 		board = new Board(8, 8);
 		initialSetup();
@@ -72,7 +72,7 @@ public class ChessMatch {
 		}
 	}
 	private void validateTargetPositon (Position source, Position target) {
-		if(!board.piece(source).possibleMove(target)) {
+		if(!board.piece(source).possibleMove(target)) { // reveber um false
 			throw new ChessException("The chosen piece can-t movre to target position");
 		}
 	}

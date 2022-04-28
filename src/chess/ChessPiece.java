@@ -11,7 +11,7 @@ public abstract class ChessPiece extends Piece{
 	private Color color;
 
 	public ChessPiece(Board board, Color color) {
-		// repassa a cahamanda para super class
+		// repassa a chamada para contrututor da super class
 		super(board);
 		this.color = color;
 	}
@@ -24,6 +24,6 @@ public abstract class ChessPiece extends Piece{
 	protected boolean isThereOpponentPiece(Position position) {
 		// donwcasting
 		ChessPiece p = (ChessPiece) getBoard().piece(position);
-		return p != null && p.getColor() != color;
+		return p != null && p.getColor() != color; // cor diferente da minha peça
 	}
 }

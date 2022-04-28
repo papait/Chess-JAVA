@@ -18,13 +18,13 @@ public class Rook extends ChessPiece {
 	
 	@Override
 	public boolean[][] possibleMoves() {
-		boolean[][] mat = new boolean[getBoard().getRows()][getBoard().getColumns()];
+		boolean[][] mat = new boolean[getBoard().getRows()][getBoard().getColumns()]; // todas posições false
 		
 		Position p = new Position (0,0);
 		
 		//above piece
 				p.setValues(position.getRow() - 1, position.getColumn());
-				while (getBoard().positionExists(p)&& !getBoard().thereIsAPiece(p)){
+				while (getBoard().positionExists(p)&& !getBoard().thereIsAPiece(p)){ 
 					mat[p.getRow()][p.getColumn()] = true;
 					p.setRow(p.getRow() - 1);
 				}

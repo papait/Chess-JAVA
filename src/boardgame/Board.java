@@ -1,4 +1,4 @@
-package boardgame;
+ package boardgame;
 
 public class Board {
 
@@ -31,7 +31,7 @@ public class Board {
 		}
 		return pieces [row][column];
 	}
-	// Metodo retornar uma peça (matriz) dado uma posição
+	// Metodo sobrecarga retornar uma peça (matriz) dado uma posição
 	public Piece piece (Position position) {
 		if (!positionExists(position)) {
 			throw new BoardException("Position not on the board");
@@ -56,7 +56,7 @@ public class Board {
 	public void placePiece (Piece piece, Position position) {
 		
 		if(thereIsAPiece(position)) {
-			throw new BoardException("There is already a piece on position");
+			throw new BoardException("There is already a piece on position"+ position);
 		}
 		pieces[position.getRow()][position.getColumn()] = piece;
 		piece.position = position; // Falo que que essa peça não esta mais na posição null
