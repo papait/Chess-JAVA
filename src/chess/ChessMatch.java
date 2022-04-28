@@ -8,13 +8,27 @@ import chess.pieces.Rook;
 // Nessa class que tem as regras do jogo xafres
 public class ChessMatch {
 
+	private int turn;
+	private Color currentPlayer;
 	private Board board;
 
 	// Classe chessmatch que determinar o tamanho do tabuleiro
 	public ChessMatch() {
 		board = new Board(8, 8);
+		turn = 1;
+		currentPlayer = Color.WHITE;
 		initialSetup();
 	}
+	
+	public int getTurn() {
+		return turn;
+	}
+
+
+	public Color getCurrentPlayer() {
+		return currentPlayer;
+	}
+
 
 	// returna uma matriz de peça de xadres relacionadas a essa partida
 	// o tabalueiro tem uma matriz de peças
@@ -48,8 +62,8 @@ public class ChessMatch {
 		// Operação valiar se tem alguma peça na posição
 		validateSourcePostion(source);
 		validateTargetPositon(source, target);
-		// Validar se tem uma peça nessa posição
-		Piece capturesPiece = makeMove(source, target);
+		Piece capturesPiece = makeMove(source, target);// Validar se tem uma peça nessa posição
+		nextTurn();
 		return (ChessPiece) capturesPiece;
 	}
 
@@ -67,6 +81,9 @@ public class ChessMatch {
 		if (!board.thereIsAPiece(position)) {
 			throw new ChessException("There is no piece on source position");
 		}
+		if (currentPlayer != (((ChessPiece) board.piece(position)).getColor())) {
+			throw new ChessException("tHE CHOSEN PIECE IS NOT YOURS");
+		}
 		if (!board.piece(position).isThereAnyPossibleMove()) {
 			throw new ChessException("There is no possible moves for the chosen piece");
 		}
@@ -77,6 +94,10 @@ public class ChessMatch {
 		}
 	}
 
+	private void nextTurn () {
+		turn++;
+		currentPlayer = (currentPlayer == Color.WHITE) ? Color.BLACK : Color.WHITE;
+	}
 	// Operação de colocar peça passando as oeperações cordenadas xadres
 	private void placeNewPiece(char column, int row, ChessPiece pieces) {
 		board.placePiece(pieces, new ChessPosition(column, row).toPosition());
