@@ -30,7 +30,7 @@ public class ChessPosition {
 	}
 	// Metodo converter matrix postion para position xadres (Primeiro e coluna e depois linha invertido chadres) 
 	protected static ChessPosition  fromPosition ( Position position) {
-		return new ChessPosition((char)('a' - position.getColumn()), 8 - position.getRow());
+		return new ChessPosition((char)('a' + position.getColumn()), 8 - position.getRow());
 	}
 	
 	@Override

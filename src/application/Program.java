@@ -22,9 +22,9 @@ public class Program {
 		List<ChessPiece> captured = new ArrayList<>();
 		// Imprimindo as peças da partida
 		// metodo receber a matriz de peças
-		
+		try{
 		while (true) {
-			try {
+			
 				UI.clearScreen();
 				UI.printMatch(chessMatch, captured);
 				System.out.println();
@@ -44,16 +44,15 @@ public class Program {
 				if (capturePiece != null) { //Peça cpturada
 					captured.add(capturePiece);
 				}
-			
-			}
-			catch (ChessException e) {
-				System.out.println(e.getMessage());
-				input.nextLine();
-			}
-			catch (InputMismatchException e) {
-				System.out.println(e.getMessage());
-				input.nextLine();
-			}
+		}
+		}
+		catch (ChessException e) {
+			System.out.println(e.getMessage());
+			input.nextLine();
+		}
+		catch (InputMismatchException e) {
+			System.out.println(e.getMessage());
+			input.nextLine();
 		}
 	}
 

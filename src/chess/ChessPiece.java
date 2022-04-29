@@ -16,6 +16,10 @@ public abstract class ChessPiece extends Piece{
 		this.color = color;
 	}
 	
+	//Metodo pegar uma position da classe genérica e converter para posição de chess
+	public ChessPosition getChessPosition() {
+		return ChessPosition.fromPosition(position);
+	}
 
 	public Color getColor () {
 		return color;
