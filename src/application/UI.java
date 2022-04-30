@@ -47,7 +47,8 @@ public class UI {
 		try {
 			String s = input.nextLine();
 			char column = s.charAt(0);
-			int row = Integer.parseInt(s.substring(1)); // Corta meu string na posição 1 e converter o resltado para Integer
+			int row = Integer.parseInt(s.substring(1)); // Corta meu string na posição 1 e converter o resltado para
+														// Integer
 
 			return new ChessPosition(column, row);
 		} catch (RuntimeException e) {
@@ -56,23 +57,31 @@ public class UI {
 	}
 
 	// Metodo imprimir a partida
-	public static void printMatch (ChessMatch chessMatch, List<ChessPiece> captured) {
+	public static void printMatch(ChessMatch chessMatch, List<ChessPiece> captured) {
 		printBoard(chessMatch.getPieces());
 		System.out.println();
 		printCapturedPieces(captured);
 		System.out.println();
-		System.out.println("Turn: "+ chessMatch.getTurn());
-		System.out.println("Waiting player: "+ chessMatch.getCurrentPlayer());
-		if (chessMatch.getCheck()) { // se for true
-			System.out.println("CHECK!!!!");
+		System.out.println("Turn: " + chessMatch.getTurn());
+		if (!chessMatch.getCheckMate()) { // Jogo continya
+
+			System.out.println("Waiting player: " + chessMatch.getCurrentPlayer());
+			if (chessMatch.getCheck()) { // se for true
+				System.out.println("CHECK!!!!");
+			}
+		} else {
+			System.out.println("CHECKMATE");
+			System.out.println("Winner: "+ chessMatch.getCurrentPlayer());
 		}
+			
 	}
+
 	// Metodo imprimir o tabuleiro
 	public static void printBoard(ChessPiece[][] pieces) {
 		for (int i = 0; i < pieces.length; i++) {
 			System.out.print((8 - i) + " ");
 			for (int j = 0; j < pieces.length; j++) {
-				printPiece(pieces[i][j],false);
+				printPiece(pieces[i][j], false);
 			}
 			System.out.println();
 		}
@@ -90,13 +99,14 @@ public class UI {
 		}
 		System.out.println("  a b c d e f g h");
 	}
+
 	// Metodo imprimi uma unica peça
 	private static void printPiece(ChessPiece piece, boolean background) {
 		if (background) { // testar se é true
 			System.out.print(ANSI_BLUE_BACKGROUND);
 		}
 		if (piece == null) {
-			System.out.print("-"+ANSI_RESET);
+			System.out.print("-" + ANSI_RESET);
 		} else {
 			if (piece.getColor() == Color.WHITE) {
 				System.out.print(ANSI_WHITE + piece + ANSI_RESET);
@@ -107,10 +117,12 @@ public class UI {
 		System.out.print(" ");
 	}
 	// metedo print peça captura
-	
-	private static void printCapturedPieces (List<ChessPiece> captured) {
-		List<ChessPiece> white = captured.stream().filter(x -> x.getColor() == Color.WHITE).collect(Collectors.toList()); //Operação pra filtra a lista com a cor
-		List<ChessPiece> black = captured.stream().filter(x -> x.getColor() == Color.BLACK).collect(Collectors.toList()); //List peças capturas
+
+	private static void printCapturedPieces(List<ChessPiece> captured) {
+		List<ChessPiece> white = captured.stream().filter(x -> x.getColor() == Color.WHITE)
+				.collect(Collectors.toList()); // Operação pra filtra a lista com a cor
+		List<ChessPiece> black = captured.stream().filter(x -> x.getColor() == Color.BLACK)
+				.collect(Collectors.toList()); // List peças capturas
 		System.out.println("Captured pieces");
 		System.out.print("White: ");
 		System.out.print(ANSI_WHITE);

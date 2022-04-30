@@ -23,7 +23,7 @@ public class Program {
 		// Imprimindo as peças da partida
 		// metodo receber a matriz de peças
 		try{
-		while (true) {
+		while (!chessMatch.getCheckMate()) { // Rodo o programa enquanto não estiver em check (TRUE)
 			
 				UI.clearScreen();
 				UI.printMatch(chessMatch, captured);
@@ -45,6 +45,8 @@ public class Program {
 					captured.add(capturePiece);
 				}
 		}
+		UI.clearScreen();
+		UI.printMatch(chessMatch, captured); // Mostra partida finalizada
 		}
 		catch (ChessException e) {
 			System.out.println(e.getMessage());
