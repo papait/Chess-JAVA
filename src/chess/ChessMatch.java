@@ -101,8 +101,9 @@ public class ChessMatch {
 	
 	// Metodo desfazer movimento// Check
 	private void undoMove(Position source, Position target, Piece capturePiece) {
-		Piece p = board.removePiece(target);
-		board.placePiece(p, source);
+		ChessPiece p = (ChessPiece)board.removePiece(target);
+		p.decreaseMoveCount();
+		board.placePiece(p, source);  //aqui já e feito um upcasting natural com p Piece
 		
 		if (capturePiece != null) {
 			board.placePiece(capturePiece, target);
@@ -113,9 +114,10 @@ public class ChessMatch {
 
 	// Logica de realizar movimento
 	private Piece makeMove(Position source, Position target) {
-		Piece p = board.removePiece(source);
+		ChessPiece p = (ChessPiece)board.removePiece(source);
+		p.increaseMoveCount();
 		Piece capturedPiece = board.removePiece(target);
-		board.placePiece(p, target);
+		board.placePiece(p, target); // aqui já e feito um upcasting natural com p Piece
 
 		if (capturedPiece != null) {
 			pieceOntheBoard.remove(capturedPiece);
